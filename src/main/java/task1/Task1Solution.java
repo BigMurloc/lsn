@@ -3,7 +3,7 @@ package task1;
 import java.util.List;
 import java.util.stream.Collectors;
 
-class Task1Solution {
+public class Task1Solution {
 
     private final int max;
     private final int min;

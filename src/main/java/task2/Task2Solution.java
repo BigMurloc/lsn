@@ -4,7 +4,7 @@ import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-class Task2Solution {
+public class Task2Solution {
 
     static List<Pair> getSortedPairs(int sum, List<Integer> input) {
         Map<Integer, Integer> numberToTotalOccurrenceCount = precomputeNumbersTotalOccurrencesCounts(input);

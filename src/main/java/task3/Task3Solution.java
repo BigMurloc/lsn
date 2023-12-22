@@ -9,7 +9,7 @@ import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
 
-class Task3Solution {
+public class Task3Solution {
     public static int getNumberOfComponents(List<Integer> input) {
         Graph<Integer, DefaultEdge> graph = prepareGraph(input);
         var vertices = graph.vertexSet();

@@ -2,7 +2,7 @@ package task2;
 
 import java.util.Objects;
 
-class Pair implements Comparable<Pair> {
+public class Pair implements Comparable<Pair> {
 
     private final int smaller;
     private final int greater;
