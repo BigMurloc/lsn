@@ -44,7 +44,16 @@ public class Main {
 
 
     private static void handleTask1(List<Integer> input) {
-        System.out.println("task1");
+        var solution = new Task1Solution(input);
+
+        for (Integer number : solution.sortedDistinctElements()) {
+            System.out.print(number + " ");
+        }
+        System.out.println();
+        System.out.println("count: " + solution.getInitialCount());
+        System.out.println("distinct: " + solution.getDistinctCount());
+        System.out.println("min: " + solution.getMin());
+        System.out.println("max: " + solution.getMax());
     }
 
     private static void handleTask2(List<Integer> input) {
