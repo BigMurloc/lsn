@@ -1,29 +1,39 @@
 package task1;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 class Task1Solution {
-    public Task1Solution(List<Integer> input) {
 
+    private final int max;
+    private final int min;
+    private final int initialCount;
+    private final List<Integer> sortedDistinctElements;
+    public Task1Solution(List<Integer> input) {
+        initialCount = input.size();
+
+        sortedDistinctElements = input.stream().sorted().distinct().collect(Collectors.toUnmodifiableList());
+        min = sortedDistinctElements.get(0);
+        max = sortedDistinctElements.get(sortedDistinctElements.size() - 1);
     }
 
     public int getMax() {
-        return 0;
+        return max;
     }
 
     public int getMin() {
-        return 0;
+        return min;
     }
 
     public int getDistinctCount() {
-        return 0;
+        return sortedDistinctElements.size();
     }
 
     public int getInitialCount() {
-        return 0;
+        return initialCount;
     }
 
     public List<Integer> sortedDistinctElements() {
-        return null;
+        return sortedDistinctElements;
     }
 }
