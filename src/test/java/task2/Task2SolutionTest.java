@@ -38,4 +38,17 @@ public class Task2SolutionTest {
                 new Pair(1, 3)
         );
     }
+
+    @Test
+    public void givenTargetSumAndListOfIntegersContainingNegativeNumbersShouldGenerateListOfPairs() {
+        var input = List.of(1, 2, 3, -1, 4, 0);
+
+        var sortedPairs = Task2Solution.getSortedPairs(3, input);
+
+        assertThat(sortedPairs).containsExactly(
+                new Pair(-1, 4),
+                new Pair(0, 3),
+                new Pair(1, 2)
+        );
+    }
 }
