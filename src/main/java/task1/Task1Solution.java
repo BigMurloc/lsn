@@ -12,7 +12,12 @@ class Task1Solution {
     public Task1Solution(List<Integer> input) {
         initialCount = input.size();
 
-        sortedDistinctElements = input.stream().sorted().distinct().collect(Collectors.toUnmodifiableList());
+        sortedDistinctElements = input
+                .stream()
+                .sorted()
+                .distinct()
+                .collect(Collectors.toUnmodifiableList());
+
         min = sortedDistinctElements.get(0);
         max = sortedDistinctElements.get(sortedDistinctElements.size() - 1);
     }
