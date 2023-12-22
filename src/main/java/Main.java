@@ -1,4 +1,6 @@
 import task1.Task1Solution;
+import task2.Pair;
+import task2.Task2Solution;
 
 import java.util.Arrays;
 import java.util.List;
@@ -11,23 +13,26 @@ public class Main {
 
         validateFlag(flag);
 
-        var userInput = readUserInput();
+        Scanner scanner = new Scanner(System.in);
+
+        var arrayInput = readUserInput(scanner);
 
         switch (flag) {
             case "task1":
-                handleTask1(userInput);
+                handleTask1(arrayInput);
                 break;
             case "task2":
-                handleTask2(userInput);
+                System.out.println("Enter target sum: ");
+                var targetSumInput = scanner.nextInt();
+                handleTask2(targetSumInput, arrayInput);
                 break;
             case "task3":
-                handleTask3(userInput);
+                handleTask3(arrayInput);
                 break;
         }
     }
 
-    private static List<Integer> readUserInput() {
-        Scanner scanner = new Scanner(System.in);
+    private static List<Integer> readUserInput(Scanner scanner) {
 
         System.out.println("Enter input in a string-like array delimited by space");
         System.out.println("Example: 1 2 3 4 5 6");
@@ -56,8 +61,10 @@ public class Main {
         System.out.println("max: " + solution.getMax());
     }
 
-    private static void handleTask2(List<Integer> input) {
-        System.out.println("task2");
+    private static void handleTask2(int targetSum, List<Integer> integers) {
+        Task2Solution
+                .getSortedPairs(targetSum, integers)
+                .forEach(System.out::println);
     }
 
     private static void handleTask3(List<Integer> input) {
