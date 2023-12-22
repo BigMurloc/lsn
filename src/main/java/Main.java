@@ -1,3 +1,5 @@
+import task1.Task1Solution;
+
 import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
@@ -29,7 +31,7 @@ public class Main {
 
         System.out.println("Enter input in a string-like array delimited by space");
         System.out.println("Example: 1 2 3 4 5 6");
-        var line = scanner.next();
+        var line = scanner.nextLine();
 
         return Arrays.stream(line.trim().split(" ")).map(Integer::valueOf).collect(Collectors.toList());
     }
