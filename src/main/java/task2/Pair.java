@@ -2,7 +2,7 @@ package task2;
 
 import java.util.Objects;
 
-class Pair {
+class Pair implements Comparable<Pair> {
 
     private final int smaller;
     private final int greater;
@@ -28,5 +28,18 @@ class Pair {
     @Override
     public String toString() {
         return smaller + " " + greater;
+    }
+
+    @Override
+    public int compareTo(Pair o) {
+        return Integer.compare(o.smaller, smaller) * -1; //asc order, flipping the sign of default Integer.compare() which compares in desc order
+    }
+
+    Integer getSmallerNumber() {
+        return smaller;
+    }
+
+    Integer getGreaterNumber() {
+        return greater;
     }
 }
