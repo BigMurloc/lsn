@@ -1,6 +1,7 @@
 import task1.Task1Solution;
 import task2.Pair;
 import task2.Task2Solution;
+import task3.Task3Solution;
 
 import java.util.Arrays;
 import java.util.List;
@@ -68,7 +69,7 @@ public class Main {
     }
 
     private static void handleTask3(List<Integer> input) {
-        System.out.println("task3");
+        System.out.println(Task3Solution.getNumberOfComponents(input));
     }
 
 }
