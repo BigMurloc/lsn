@@ -87,3 +87,26 @@ This step takes O(p * total_occurrence) in terms of time complexity
 Time complexity: O(n + p * (log(p) + total_occurrence))  
 Memory complexity: O(n + log(p))
 ## Task 3
+
+### The problem
+
+Given a list of integers that make up a graph - find the number of components.
+
+The first number in array is a single vertex, the remaining pairs are the connections between vertices.  
+Example: `1 2 3 3 4 5 6` translates to graph of: `[1 2-3-4 5-6]` with `3` components.
+
+### The solution
+
+As far as I know the core java does not have implantation of a graph, nor does it have graph traversal algorithms like BFS or DFS.  
+This is why I decided to use `JGraphT` library which as both.  
+Additionally it has a `ConnectivityInspector` class which has method `connectedSets()` and the size of these sets is the answer to the given problem.  
+However, it has greater memory usage hence the custom implementation.
+
+The idea is very simple: 
+
+1. We create graph of given vertices
+2. Once we have the graph, we traverse all vertices in it and check whether the vertex is marked as seen or not
+3. If the vertex was not seen we increment the number of components and perform DFS on this vertex, marking all visited vertices in the process (but not incrementing the counter)
+4. Once the DFS is done, we traverse remaining vertices and repeat the process for every vertex that was not marked by DFS
+
+The result of this algorithm is a number of components.
