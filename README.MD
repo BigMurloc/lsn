@@ -33,7 +33,7 @@ If there were lots of duplicated elements it would be considerable to reverse th
 Since the distinct elements are sorted in ascending order the first element is **min** and the last element is **max**.  
 In this case the implementation of underlying `List` is `ArrayList` so the `get()` takes O(1) in terms of performance.
 
-#### Summary
+#### Summary  
 Time complexity: O(n log(n))  
 Memory complexity: O(log (n))
 ---
