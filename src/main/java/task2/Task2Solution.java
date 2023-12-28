@@ -7,6 +7,7 @@ import java.util.stream.Stream;
 public class Task2Solution {
 
     public static List<Pair> getSortedPairs(int sum, List<Integer> input) {
+        //todo check for sum if its odd
         Map<Integer, Integer> numberToTotalOccurrenceCount = precomputeNumbersTotalOccurrencesCounts(input);
 
         return input

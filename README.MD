@@ -22,7 +22,7 @@ The output of this app should be a list of distinct integers with basic measurem
 For readability and preference reasons I decided to use Java Streams API.  
 
 #### Sorting
-The underlying algorithm for sorting integers is quite advanced `DualPivotQuicksort` which offers O(n log(n)) performance and O(n) memory complexity.
+The underlying algorithm for sorting integers is quite advanced `DualPivotQuicksort` which offers O(n log(n)) performance and O(log(n)) memory complexity.
 
 #### Distinct elements
 Chaining `sorted().distinct()` offers O(1) memory complexity since the underlying `distinct()` does not need to build a HashSet.  
@@ -35,8 +35,55 @@ In this case the implementation of underlying `List` is `ArrayList` so the `get(
 #### Overall time and memory complexity
 
 Time complexity: O(n log(n))  
-Memory complexity: O(n)
+Memory complexity: O(log (n))
 ---
 ## Task 2
 
+### The problem
+
+The output of this app should be a list of pairs making up to a target sum sorted in ascending order.  
+If there are duplicated numbers e.g. `[1, 1, 2, 2]` and a target sum `3` the output should be 4 pairs `[(1,2), (1,2), (1,2), (1,2)]`  
+The target sum should be a `odd` number, so the input `[1, 1, 1]` with a target sum `2` is invalid.
+
+### The solution
+
+For readability and preference reasons I decided to use Java Streams API.  
+I treat each pair uniquely as object which affects time performance due to the need to generate combinations.  
+This could be tweaked if each of the pairs would only store an information about how many of such pairs exist.  
+
+#### Precomputing values
+So in order to generate combinations we need the information about how many of such pairs exist in the first place. 
+Imagine we have two sets `A` and `B` with `m` and `n` elements correspondingly.  
+The amount of possible pairs is `m * n`.
+
+The algorithm goes over all numbers, finds complementary numbers and stores them in a HashMap.  
+The formula for complementary number is `complement = sum - current_value`
+
+However, there is an edge case if we wanted to generate pairs from the same set.  
+If we had a set `A` with `n` elements in it, the `n * n` would generate pairs containing exactly the same elements.  
+Since the target sum is `odd` this edge case does not apply, but for the future reference the correct formula is `n * (n - 1)` 
+
+This step is O(n) in both time and memory complexity. 
+
+#### Filtering non-complementary values & mapping to Pair object
+After precomputing values the first step is to filter out numbers that are not part of the solution (i.e. a number that is not a part of the resulting pairs).  
+To filter out non-complementary values we look at the precomputed `Map` to see if it contains the `complement`.  
+
+Then each of the number that passed the filter is mapped to a `Pair` object containing both numbers that add up to the `target sum`.  
+This creates a duplicated pairs which is the reason why later on in the pipe we call `distinct()`.  
+
+#### Sorting and eliminating duplicates
+The output list should be sorted in ascending order. To achieve that we sort `Pairs` by looking at its smaller number.  
+At this point the list contains duplicated pairs, so we also call `distinct()` leveraging chaining mechanism with cost of O(1) memory.
+
+This step takes O(p log(p)) in terms of time complexity and O(log (p)) in terms of memory complexity where p - pair. 
+
+#### Generating combinations
+We have a list of distinctly sorted pairs in ascending order, now we need to generate combinations based on logic explained in the **Precomputed values** section
+
+This step takes O(p * total_occurrence) in terms of time complexity
+
+#### Summary
+Time complexity: O(n + p * (log(p) + total_occurrence))  
+Memory complexity: O(n + log(p))
 ## Task 3
