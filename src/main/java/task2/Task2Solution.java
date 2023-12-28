@@ -18,12 +18,14 @@ public class Task2Solution {
                 .map(number -> new Pair(number, sum - number))
                 .sorted()
                 .distinct()
-                .flatMap(pair -> {
-                    int smallerOccurrenceCount = numberToTotalOccurrenceCount.get(pair.getSmallerNumber());
-                    int greaterNumberOccurrenceCount = numberToTotalOccurrenceCount.get(pair.getGreaterNumber());
-                    return Stream.iterate(pair, it -> it).limit((long) smallerOccurrenceCount * greaterNumberOccurrenceCount);
-                })
+                .flatMap(pair -> generateCombinations(pair, numberToTotalOccurrenceCount))
                 .collect(Collectors.toUnmodifiableList());
+    }
+
+    private static Stream<Pair> generateCombinations(Pair pair, Map<Integer, Integer> numberToTotalOccurrenceCount) {
+        int smallerOccurrenceCount = numberToTotalOccurrenceCount.get(pair.getSmallerNumber());
+        int greaterNumberOccurrenceCount = numberToTotalOccurrenceCount.get(pair.getGreaterNumber());
+        return Stream.iterate(pair, it -> it).limit((long) smallerOccurrenceCount * greaterNumberOccurrenceCount);
     }
 
     private static Map<Integer, Integer> precomputeNumbersTotalOccurrencesCounts(List<Integer> input) {
