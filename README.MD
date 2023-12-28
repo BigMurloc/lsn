@@ -4,10 +4,11 @@
 
 The app expects to be provided with one of the flags (`task1`, `task2`, `task3`) to run appropriate task.  
 
-Linux:  `mvn exec:java -Dexec.args="task1"`  
-Windows: `mvn exec:java -D"exec.args"="task1"`
 ---
 ## Task 1
+
+Linux: `mvn exec:java -Dexec.args="task1"`  
+Windows: `mvn exec:java -D"exec.args"="task1"`
 
 ### The problem
 
@@ -38,6 +39,9 @@ Time complexity: O(n log(n))
 Memory complexity: O(log (n))
 ---
 ## Task 2
+
+Linux: `mvn exec:java -Dexec.args="task2"`   
+Windows: `mvn exec:java -D"exec.args"="task2"`
 
 ### The problem
 
@@ -87,6 +91,9 @@ This step takes O(p * total_occurrence) in terms of time complexity
 Time complexity: O(n + p * (log(p) + total_occurrence))  
 Memory complexity: O(n + log(p))
 ## Task 3
+
+Linux: `mvn exec:java -Dexec.args="task3"`  
+Windows: `mvn exec:java -D"exec.args"="task3"`
 
 ### The problem
 
