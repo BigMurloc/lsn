@@ -1,6 +1,7 @@
 # LSN tasks solutions
 
 ## How to run
+Before running any of the tasks you need to compile the project first by running `mvn compile`
 
 The app expects to be provided with one of the flags (`task1`, `task2`, `task3`) to run appropriate task.  
 
